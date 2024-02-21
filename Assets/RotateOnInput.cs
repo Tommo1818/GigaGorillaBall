@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateOnInput : MonoBehaviour
+public class RotateLevelGameObject : MonoBehaviour
 {
-    public float rotationSpeed; // Adjust this value for desired tilt speed
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float rotationSpeed; // Adjust this value for desired rotation speed
+    public Transform pivotPoint; // The object around which to rotate
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime); // Rotate clockwise
+            RotateClockwise(); // Call function for clockwise rotation
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime); // Rotate counter-clockwise
+            RotateAntiClockwise(); // Call function for anticlockwise rotation
         }
-        
+    }
+
+    private void RotateClockwise()
+    {
+        transform.RotateAround(pivotPoint.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+    }
+
+    private void RotateAntiClockwise()
+    {
+        transform.RotateAround(pivotPoint.position, Vector3.back, rotationSpeed * Time.deltaTime);
     }
 }
