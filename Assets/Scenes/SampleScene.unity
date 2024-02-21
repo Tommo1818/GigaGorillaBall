@@ -609,9 +609,9 @@ GameObject:
   - component: {fileID: 1241677445}
   - component: {fileID: 1241677444}
   - component: {fileID: 1241677448}
+  - component: {fileID: 1241677449}
   - component: {fileID: 1241677447}
   - component: {fileID: 1241677446}
-  - component: {fileID: 1241677449}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -1005,7 +1005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0dd3edf73d040458673e17a3a4947b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
+  rotationSpeed: 50
+  pivotPoint: {fileID: 1130859605}
 --- !u!1 &1804877115
 GameObject:
   m_ObjectHideFlags: 0
