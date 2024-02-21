@@ -31,16 +31,26 @@ public class RotateLevelGameObject : MonoBehaviour
         }
         
     }
-    void ResetRotation()
+    public void ResetRotation()
     {
-        if (Quaternion.Angle(transform.rotation, initialRotation) > 0)
+        float angle = Quaternion.Angle(transform.rotation, initialRotation);
+
+        if (angle > 0.1f) // Adjust the threshold as needed
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, currentRotationLerpValue);
-            currentRotationLerpValue += smoothingSpeed * Time.deltaTime;
+            float step = rotationSpeed * Time.deltaTime;
+            Quaternion targetRotation = Quaternion.RotateTowards(transform.rotation, initialRotation, step);
+
+            // Calculate the pivot direction and the pivot position
+            Vector3 pivotDirection = transform.position - pivotPoint.position;
+            Vector3 pivotPosition = pivotPoint.position + pivotDirection;
+
+            // Rotate the platform around the pivot position
+            transform.RotateAround(pivotPosition, Vector3.up, step);
+            transform.rotation = targetRotation;
         }
         else
         {
-            currentRotationLerpValue = 0;
+            transform.rotation = initialRotation;
         }
     }
     private void RotateClockwise()

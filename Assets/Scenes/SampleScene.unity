@@ -1007,6 +1007,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 50
   pivotPoint: {fileID: 1130859605}
+  smoothingSpeed: 1
+  initialRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1804877115
 GameObject:
   m_ObjectHideFlags: 0
