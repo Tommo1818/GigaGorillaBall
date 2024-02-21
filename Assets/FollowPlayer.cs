@@ -16,13 +16,9 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void LateUpdate()
-    {
         Vector3 desiredPosition = player.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        smoothedPosition.z = transform.position.z; // Keep the camera's current z position
         transform.position = smoothedPosition;
     }
 }
