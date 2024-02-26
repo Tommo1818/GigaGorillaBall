@@ -9,6 +9,7 @@ public class RotateLevelGameObject : MonoBehaviour
     public float smoothingSpeed;
     private float currentRotationLerpValue;
     public Quaternion initialRotation;
+    public float maxRotationAngle = 10f;
 
     void Start()
     {
@@ -24,32 +25,27 @@ public class RotateLevelGameObject : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
         {
             RotateAntiClockwise(); // Call function for anticlockwise rotation
-        } 
-        else if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        } else
         {
             ResetRotation();
         }
-        
     }
     public void ResetRotation()
     {
+        // Determine the angle between the current rotation and the initial rotation
         float angle = Quaternion.Angle(transform.rotation, initialRotation);
 
         if (angle > 0.1f) // Adjust the threshold as needed
         {
-            float step = rotationSpeed * Time.deltaTime;
-            Quaternion targetRotation = Quaternion.RotateTowards(transform.rotation, initialRotation, step);
+            // Determine the direction of rotation
+            Vector3 rotationAxis = Vector3.Cross(transform.up, initialRotation * Vector3.up);
 
-            // Calculate the pivot direction and the pivot position
-            Vector3 pivotDirection = transform.position - pivotPoint.position;
-            Vector3 pivotPosition = pivotPoint.position + pivotDirection;
-
-            // Rotate the platform around the pivot position
-            transform.RotateAround(pivotPosition, Vector3.up, step);
-            transform.rotation = targetRotation;
+            // Rotate the platform back to the initial rotation
+            transform.RotateAround(pivotPoint.position, rotationAxis, rotationSpeed * Time.deltaTime);
         }
-        else
+        else 
         {
+            // If the angle is less than the threshold, reset the rotation to the initial rotation
             transform.rotation = initialRotation;
         }
     }
