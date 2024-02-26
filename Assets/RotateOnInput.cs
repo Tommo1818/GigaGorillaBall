@@ -10,6 +10,7 @@ public class RotateLevelGameObject : MonoBehaviour
     private float currentRotationLerpValue;
     public Quaternion initialRotation;
     public float maxRotationAngle = 1f;
+    public float rotationThreshold = 0.5f;
 
     void Start()
     {
@@ -18,14 +19,19 @@ public class RotateLevelGameObject : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) // if both keys are pressed, reset rotation
+        {
+            ResetRotation();
+        }
+        else if (Input.GetKey(KeyCode.A))
         {
             RotateClockwise(); // Call function for clockwise rotation
         }
         else if (Input.GetKey(KeyCode.D))
         {
             RotateAntiClockwise(); // Call function for anticlockwise rotation
-        } else
+        }
+        else 
         {
             ResetRotation();
         }
@@ -35,7 +41,7 @@ public class RotateLevelGameObject : MonoBehaviour
         // Determine the angle between the current rotation and the initial rotation
         float angle = Quaternion.Angle(transform.rotation, initialRotation);
 
-        if (angle > 0.1f) // Adjust the threshold as needed
+        if (angle > rotationThreshold) // Adjust the threshold as needed
         {
             // Determine the direction of rotation
             Vector3 rotationAxis = Vector3.Cross(transform.up, initialRotation * Vector3.up);

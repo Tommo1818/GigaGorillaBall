@@ -480,9 +480,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.25
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1233,19 +1233,35 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1241677448}
     m_ColliderPaths:
     - - X: 210000000
+        Y: -20000002
+      - X: 80000000
+        Y: -20000002
+      - X: 80000000
         Y: -20000000
-      - X: -230000000
+      - X: -80000000
         Y: -20000000
+      - X: -80000000
+        Y: -19999998
       - X: -230000000
+        Y: -19999998
+      - X: -230000000
+        Y: -29999998
+      - X: -80000000
+        Y: -29999998
+      - X: -80000000
         Y: -30000000
+      - X: 80000000
+        Y: -30000000
+      - X: 80000000
+        Y: -30000002
       - X: 210000000
-        Y: -30000000
+        Y: -30000002
   m_CompositePaths:
     m_Paths:
-    - - {x: 20.999971, y: -3}
-      - {x: 20.999971, y: -2}
+    - - {x: 20.999971, y: -3.0000002}
+      - {x: 20.999971, y: -2.0000002}
       - {x: -23, y: -2.0000293}
-      - {x: -22.999971, y: -3}
+      - {x: -22.999971, y: -2.9999998}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -1325,10 +1341,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0dd3edf73d040458673e17a3a4947b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
+  rotationSpeed: 100
   pivotPoint: {fileID: 1130859605}
   smoothingSpeed: 1
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
+  maxRotationAngle: 20
+  rotationThreshold: 1
 --- !u!1 &1804877115
 GameObject:
   m_ObjectHideFlags: 0
