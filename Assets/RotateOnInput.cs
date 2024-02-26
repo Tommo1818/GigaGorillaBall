@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class RotateLevelGameObject : MonoBehaviour
 {
-    public float rotationSpeed; // Adjust this value for desired rotation speed
+    public float rotationSpeed = 100f; // Adjust this value for desired rotation speed
     public Transform pivotPoint; // The object around which to rotate
     public float smoothingSpeed;
     private float currentRotationLerpValue;
     public Quaternion initialRotation;
-    public float maxRotationAngle = 10f;
+    public float maxRotationAngle = 1f;
 
     void Start()
     {
@@ -51,11 +51,20 @@ public class RotateLevelGameObject : MonoBehaviour
     }
     private void RotateClockwise()
     {
-        transform.RotateAround(pivotPoint.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+        float angle = Quaternion.Angle(transform.rotation, initialRotation);
+        if (angle < maxRotationAngle)
+        {
+            transform.RotateAround(pivotPoint.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+        }
+        
     }
 
     private void RotateAntiClockwise()
     {
-        transform.RotateAround(pivotPoint.position, Vector3.back, rotationSpeed * Time.deltaTime);
+        float angle = Quaternion.Angle(transform.rotation, initialRotation);
+        if (angle < maxRotationAngle)
+        {
+            transform.RotateAround(pivotPoint.position, Vector3.back, rotationSpeed * Time.deltaTime);
+        }
     }
 }
