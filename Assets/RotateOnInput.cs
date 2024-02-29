@@ -6,8 +6,6 @@ public class RotateLevelGameObject : MonoBehaviour
 {
     public float rotationSpeed = 100f; // Adjust this value for desired rotation speed
     public Transform pivotPoint; // The object around which to rotate
-    public float smoothingSpeed;
-    private float currentRotationLerpValue;
     private Quaternion initialRotation;
     public float maxRotationAngle;
     public float rotationThreshold;
