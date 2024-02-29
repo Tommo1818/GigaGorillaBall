@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AlwaysUpright : MonoBehaviour
 {
-    public Transform ballTransform; // Reference to the ball's Transform
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -20,6 +18,5 @@ public class AlwaysUpright : MonoBehaviour
         // Position the player sprite relative to the ball's center
         Vector3 offset = transform.localPosition;
         offset.y = 0.0f; // Adjust as needed to position the sprite appropriately
-        transform.localPosition = ballTransform.position + offset;
     }
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1416229650781370526}
   - component: {fileID: 3741347585433047940}
   - component: {fileID: 6603698878688782534}
-  - component: {fileID: 548014101309280303}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Banana
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1020996671667041801}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.98, y: -1.573, z: 0}
+  m_LocalPosition: {x: 0, y: -1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -153,20 +152,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.30202207, y: 0.28478813}
   m_EdgeRadius: 0
---- !u!114 &548014101309280303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020996671667041801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca0dd3edf73d040458673e17a3a4947b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 100
-  pivotPoint: {fileID: 0}
-  smoothingSpeed: 1
-  maxRotationAngle: 20
-  rotationThreshold: 1
