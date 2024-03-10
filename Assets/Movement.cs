@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     public LayerMask groundLayers; // Assign the layers considered as ground in the inspector
     public float extraHeightText = 0.1f;
+    public bool hasJumpItem = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,7 +18,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsTouchingGround() && Input.GetKeyDown(KeyCode.Space))
+        if (IsTouchingGround() && Input.GetKeyDown(KeyCode.Space) && hasJumpItem)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1f, groundLayers);
 
@@ -36,5 +37,11 @@ public class Movement : MonoBehaviour
 
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.down, extraHeightText, groundLayers);
         return raycastHit.collider != null;
+    }
+
+    public void PickUpJumpItem()
+    {
+        hasJumpItem = true;
+        Debug.Log("hasJumpItem was set to true");
     }
 }
