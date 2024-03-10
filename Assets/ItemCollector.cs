@@ -31,8 +31,7 @@ public class ItemCollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Apple"))
         {
             Destroy(collision.gameObject);
-            Physics2D.gravity = new Vector2(0, 9.81f);
-            playerOrientation.FlipOrientationAngle();
+            playerOrientation.FlipGravity();
             appleCount++;
         }
     }
