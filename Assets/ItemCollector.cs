@@ -7,9 +7,11 @@ public class ItemCollector : MonoBehaviour
 {
     private int bananaCount = 0;
     private int melonCount = 0;
+    private int appleCount = 0;
 
     [SerializeField] private TextMeshProUGUI bananaCountText;
     [SerializeField] private Movement playerMovement;
+    [SerializeField] private AlwaysUpright playerOrientation;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Banana"))
@@ -24,6 +26,14 @@ public class ItemCollector : MonoBehaviour
             Destroy(collision.gameObject);
             melonCount++;
             playerMovement.PickUpJumpItem();
+        }
+
+        if (collision.gameObject.CompareTag("Apple"))
+        {
+            Destroy(collision.gameObject);
+            Physics2D.gravity = new Vector2(0, 9.81f);
+            playerOrientation.FlipOrientationAngle();
+            appleCount++;
         }
     }
 }
