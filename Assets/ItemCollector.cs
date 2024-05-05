@@ -5,7 +5,7 @@ using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int bananaCount = 0;
+    public int bananaCount = 0;
     private int melonCount = 0;
     private int appleCount = 0;
 
