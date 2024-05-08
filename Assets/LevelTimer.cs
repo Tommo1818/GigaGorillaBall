@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // Required for TextMeshPro
 using UnityEngine.SceneManagement;
-
 public class LevelTimer : MonoBehaviour
 {
     private bool levelFinished = false;
@@ -13,6 +12,7 @@ public class LevelTimer : MonoBehaviour
     public GameObject player;
     public GameObject finalScoreText;
     private float finishTime;
+
     void Start()
     {
         startTime = Time.time;
