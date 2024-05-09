@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AlwaysUpright : MonoBehaviour
 {
-    private bool isGravityFlipped = false;
+    public bool isGravityFlipped = false;
     private Vector3 previousPosition;
-    private float rotationY = 0.0f; // Moved outside of Update()
+    private float rotationY = 0.0f;
 
     void Start()
     {

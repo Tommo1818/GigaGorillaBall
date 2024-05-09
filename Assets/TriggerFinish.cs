@@ -8,6 +8,18 @@ public class TriggerFinish : MonoBehaviour
     public GameObject finishText; // The text to display when the level is finished
     // OnTriggerEnter2D is called when the Collider2D other enters the trigger (2D physics only)
     public HighScoreController highScoreController; // Reference to the HighScoreController script
+    
+    void Start()
+    {
+        Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/mainmenu");
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the collided object is the trigger object
@@ -20,6 +32,7 @@ public class TriggerFinish : MonoBehaviour
                 levelTimer.FinishLevel();
                 finishText.SetActive(true);
                 highScoreController.UpdateHighScores();
+                Invoke("DisablePhysics", 0.5f);
             }
             else
             {
@@ -27,4 +40,8 @@ public class TriggerFinish : MonoBehaviour
             }
         }
     }
+    void DisablePhysics()
+{
+    Physics2D.simulationMode = SimulationMode2D.Script;
+}
 }

@@ -10,9 +10,17 @@ public class Movement : MonoBehaviour
     public LayerMask groundLayers; // Assign the layers considered as ground in the inspector
     public float extraHeightText = 0.1f;
     public bool hasJumpItem = false;
+    private AlwaysUpright alwaysUpright;
+    public CircleCollider2D circleCollider;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        alwaysUpright = GetComponentInChildren<AlwaysUpright>();
+        // If you didn't assign the circle collider in the inspector, find it automatically
+        if (circleCollider == null)
+        {
+            circleCollider = GetComponent<CircleCollider2D>();
+        }
     }
 
     // Update is called once per frame
@@ -25,18 +33,30 @@ public class Movement : MonoBehaviour
             if (hit.collider != null)
             {
                 Vector2 jumpDirection = hit.normal;
+                
                 rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //reset the level
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         }
     }
 
     bool IsTouchingGround()
     {
+        /*
         Vector2 boxCastSize = new Vector2(transform.localScale.x, extraHeightText);
         Vector2 boxCastOrigin = (Vector2)transform.position - new Vector2(0, transform.localScale.y / 2);
 
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.down, extraHeightText, groundLayers);
         return raycastHit.collider != null;
+        */
+        float radius = circleCollider.radius + extraHeightText;
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, radius, groundLayers);
+
+        return hit != null;
     }
 
     public void PickUpJumpItem()
