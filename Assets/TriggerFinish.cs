@@ -12,6 +12,7 @@ public class TriggerFinish : MonoBehaviour
     void Start()
     {
         Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
+        Physics2D.gravity = new Vector2(0, -9.81f); // Set gravity to down
     }
     void Update()
     {
@@ -41,7 +42,7 @@ public class TriggerFinish : MonoBehaviour
         }
     }
     void DisablePhysics()
-{
-    Physics2D.simulationMode = SimulationMode2D.Script;
-}
+    {
+        Physics2D.simulationMode = SimulationMode2D.Script;
+    }
 }

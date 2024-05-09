@@ -2147,12 +2147,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df24d6dadb1eba43b912baaf7b988cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 7
+  jumpForce: 6
   groundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   extraHeightText: 0.001
   hasJumpItem: 0
+  circleCollider: {fileID: 1130859606}
 --- !u!114 &1130859608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8375,6 +8376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a538a72b8547542a89c23a6cf0a102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGravityFlipped: 0
 --- !u!1 &1959972845
 GameObject:
   m_ObjectHideFlags: 0
@@ -10937,6 +10939,10 @@ PrefabInstance:
     - target: {fileID: 9101241975128738724, guid: b304d100816f5fa41ac3e1712113c974, type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101241975128738724, guid: b304d100816f5fa41ac3e1712113c974, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

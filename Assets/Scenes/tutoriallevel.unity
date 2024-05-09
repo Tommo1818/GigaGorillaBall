@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df24d6dadb1eba43b912baaf7b988cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 7
+  jumpForce: 5
   groundLayers:
     serializedVersion: 2
     m_Bits: 8

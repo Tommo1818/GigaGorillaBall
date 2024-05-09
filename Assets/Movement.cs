@@ -33,7 +33,6 @@ public class Movement : MonoBehaviour
             if (hit.collider != null)
             {
                 Vector2 jumpDirection = hit.normal;
-                
                 rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
             }
         }
@@ -46,13 +45,6 @@ public class Movement : MonoBehaviour
 
     bool IsTouchingGround()
     {
-        /*
-        Vector2 boxCastSize = new Vector2(transform.localScale.x, extraHeightText);
-        Vector2 boxCastOrigin = (Vector2)transform.position - new Vector2(0, transform.localScale.y / 2);
-
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.down, extraHeightText, groundLayers);
-        return raycastHit.collider != null;
-        */
         float radius = circleCollider.radius + extraHeightText;
         Collider2D hit = Physics2D.OverlapCircle(transform.position, radius, groundLayers);
 
